@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="EndavaForms.Views.LocalDb"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Text="Nuevo" Priority="0"
+                     Command="{Binding NuevoRegistroCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ListView Margin="10"
+              ItemsSource="{Binding Registros, Mode=OneWay}"
+              IsRefreshing="{Binding IsBusy, Mode=OneWay}" >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell
+                    Text="{Binding NombreCompleto}"
+                    Detail="{Binding FechaDeNacimiento}"></TextCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+    </ListView>
+</ContentPage>
